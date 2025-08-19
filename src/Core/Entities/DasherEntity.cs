@@ -1,10 +1,14 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 using motorbikes_rent_api.Core.Enums;
 
 namespace motorbikes_rent_api.Core.Entities;
 
 [Table("dashers")]
+[Index(nameof(Id), IsUnique = true)]
+[Index(nameof(Cnpj), IsUnique = true)]
+[Index(nameof(CnhNumber), IsUnique = true)]
 public class DasherEntity
 {
     [Key] public string Id { get; set; }
@@ -13,5 +17,5 @@ public class DasherEntity
     public DateTime BirthDate { get; set; }
     public string? CnhNumber { get; set; }
     public CnhTypeEnum[]? CnhTypes { get; set; }
-    public required byte[]? CnhImage { get; set; }
+    public required string? CnhImageUrl { get; set; }
 }

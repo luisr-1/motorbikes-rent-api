@@ -10,8 +10,8 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <Folder Include="Migrations\"/>
         <Folder Include="src\Auth\"/>
-        <Folder Include="src\Core\DTOs\"/>
         <Folder Include="src\UseCases\"/>
         <Folder Include="src\Web\"/>
         <Folder Include="test\Integration\"/>
@@ -19,11 +19,13 @@
     </ItemGroup>
 
     <ItemGroup>
+        <PackageReference Include="Confluent.Kafka" Version="2.11.1"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.8"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.8">
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
+        <PackageReference Include="Minio" Version="6.0.5"/>
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4"/>
         <PackageReference Include="System.Text.Json" Version="9.0.8"/>
     </ItemGroup>

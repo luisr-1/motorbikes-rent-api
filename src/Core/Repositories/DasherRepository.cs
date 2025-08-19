@@ -16,10 +16,10 @@ public class DasherRepository : IDasherRepository
         _context = context;
     }
 
-    public async Task<DasherEntity?> CreateAsync(DasherEntity? dasher)
+    public async Task<DasherEntity> CreateAsync(DasherEntity? dasher)
     {
         if (dasher == null) return null;
-        
+
         _context.Dashers.Add(dasher);
         await _context.SaveChangesAsync();
         return dasher;
@@ -31,8 +31,29 @@ public class DasherRepository : IDasherRepository
         return dashers.Select(d => d.ToModel());
     }
 
-    public async Task<DasherEntity?> GetByIdAsync(string id)
+    public async Task<DasherEntity> GetByIdAsync(string id)
     {
         return await _context.Dashers.FirstOrDefaultAsync(d => d.Id == id);
+    }
+
+    public async Task<DasherEntity> GetByCnpjAsync(string cnpj)
+    {
+        return await _context.Dashers.FirstOrDefaultAsync(d => d.Cnpj == cnpj);
+    }
+
+    public async Task<DasherEntity> GetByCnhNumber(string cnhNumber)
+    {
+        return await _context.Dashers.FirstOrDefaultAsync(d => d.CnhNumber == cnhNumber);
+    }
+
+    public async Task<DasherEntity> UpdateAsync(DasherEntity dasher)
+    {
+        var dasherToUpdate = await _context.Dashers.FirstOrDefaultAsync(d => d.Id == dasher.Id);
+
+        if (dasherToUpdate == null) throw new InvalidOperationException("Dasher not found");
+
+        dasherToUpdate.CnhNumber = dasher.CnhNumber;
+        await _context.SaveChangesAsync();
+        return dasherToUpdate;
     }
 }

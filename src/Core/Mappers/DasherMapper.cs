@@ -16,7 +16,7 @@ public static class DasherMapper
             BirthDate = model.BirthDate,
             CnhNumber = model.CnhNumber,
             CnhTypes = model.CnhTypes,
-            CnhImage = model.CnhImage
+            CnhImageUrl = null
         };
     }
 
@@ -30,7 +30,7 @@ public static class DasherMapper
             BirthDate = entity.BirthDate,
             CnhNumber = entity.CnhNumber,
             CnhTypes = entity.CnhTypes,
-            CnhImage = entity.CnhImage
+            CnhImage = null
         };
     }
 }

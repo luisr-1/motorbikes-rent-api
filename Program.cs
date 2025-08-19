@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
-using motorbikes_rent_api.Controllers;
 using motorbikes_rent_api.Core.Data;
 using motorbikes_rent_api.Core.Repositories;
 using motorbikes_rent_api.Core.Repositories.Interfaces;
 using motorbikes_rent_api.Infrastructure.Serialization;
+using motorbikes_rent_api.Infrastructure.Storage;
 using motorbikes_rent_api.Service;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +13,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddScoped<IDasherRepository, DasherRepository>();
 builder.Services.AddScoped<IDasherService, DasherService>();
+builder.Services.AddScoped<IMinioService, MinioService>();
 
 builder.Services.AddControllers().AddJsonOptions(options =>
 {
